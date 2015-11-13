@@ -1,3 +1,5 @@
+from math import sqrt
+
 from numerics.solvers import *
 
 ###
