@@ -19,7 +19,7 @@ class SimpsonIntegratorTest(TestCase):
         f = lambda x: exp((-1) * (x ** 2))
 
         integrated = self.integrator.integrate(f, -1, 2, 238)
-        print(str(integrated))
+
         # Correct to 9  _significant_ digits
         self.assertEqual(1.62890552, round(integrated, 8))
 
@@ -38,6 +38,6 @@ class TrapezoidalIntegratorTest(TestCase):
         f = lambda x: exp((-1) * (x ** 2))
 
         integrated = self.integrator.integrate(f, -1, 2, 31687)
-        print(str(integrated))
+
         # Correct to 9 _significant_ digits
         self.assertEqual(1.62890552, round(integrated, 8))

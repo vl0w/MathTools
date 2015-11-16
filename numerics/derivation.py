@@ -3,8 +3,8 @@ class Differentiator:
         raise NotImplementedError("Choose a proper implementation")
 
     def extrapolate(self, f, x, h=10 ** -5):
-        d_h = self.differentiate(f, x, h)
-        d_2h = self.differentiate(f, x, 2 * h)
+        d_h = self.differentiate(f, x, h / 2)
+        d_2h = self.differentiate(f, x, h)
 
         return d_h + ((d_h - d_2h) / (2 ** 2 - 1))
 

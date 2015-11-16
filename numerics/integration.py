@@ -1,3 +1,6 @@
+from math import ceil
+
+
 class Integrator:
     def __init__(self, extrapolation_power=1):
         self.extrapolation_power = extrapolation_power
@@ -15,8 +18,8 @@ class Integrator:
         :return: Der integrierte Wert
         """
 
-        i_2h = self.integrate(f, a, b, n)
-        i_h = self.integrate(f, a, b, 2 * n)
+        i_2h = self.integrate(f, a, b, n / 2)
+        i_h = self.integrate(f, a, b, n)
 
         return i_h - ((i_h - i_2h) / (2 ** self.extrapolation_power - 1))
 
@@ -26,6 +29,7 @@ class SimpsonIntegrator(Integrator):
         super().__init__(4)
 
     def integrate(self, f, a, b, n):
+        n = ceil(n)
         h = (b - a) / n
         integrated = f(a) + f(b)
 
@@ -41,6 +45,7 @@ class TrapezoidalIntegrator(Integrator):
         super().__init__(2)
 
     def integrate(self, f, a, b, n):
+        n = ceil(n)
         h = (b - a) / n
 
         integrated = f(a) + f(b)
